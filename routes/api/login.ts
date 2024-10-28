@@ -3,9 +3,11 @@ import { setCookie } from "$std/http/cookie.ts";
 
 export const handler: Handlers = {
   async POST(req) {
+    const fakeUsername = "admin";
+    const fakePassword = "admin";
     const url = new URL(req.url);
     const form = await req.formData();
-    if (form.get("username") === "deno" && form.get("password") === "land") {
+    if (form.get("username") === fakeUsername && form.get("password") === fakePassword) {
       const headers = new Headers();
       setCookie(headers, {
         name: "auth",
@@ -17,7 +19,7 @@ export const handler: Handlers = {
         secure: true,
       });
 
-      headers.set("location", "/");
+      headers.set("location", "/todo");
       return new Response(null, {
         status: 303, // "See Other"
         headers,

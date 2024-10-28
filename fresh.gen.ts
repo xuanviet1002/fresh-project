@@ -5,9 +5,13 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_login from "./routes/api/login.ts";
+import * as $api_todos from "./routes/api/todos.ts";
 import * as $index from "./routes/index.tsx";
+import * as $login from "./routes/login.tsx";
 import * as $logout from "./routes/logout.ts";
-
+import * as $todo from "./routes/todo.tsx";
+import * as $ToDoItem from "./islands/ToDoItem.tsx";
+import * as $ToDoList from "./islands/ToDoList.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -15,10 +19,16 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/login.ts": $api_login,
+    "./routes/api/todos.ts": $api_todos,
     "./routes/index.tsx": $index,
+    "./routes/login.tsx": $login,
     "./routes/logout.ts": $logout,
+    "./routes/todo.tsx": $todo,
   },
-  islands: {},
+  islands: {
+    "./islands/ToDoItem.tsx": $ToDoItem,
+    "./islands/ToDoList.tsx": $ToDoList,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 
